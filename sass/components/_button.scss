@@ -1,0 +1,151 @@
+
+/* button is a link so we need a link pseudoclass- a special state of the button selector
+We use pseudoclasses to style elements under a certain condition
+The link is a special state of a selector when it is an anchor element. There is also a visited state i.e. when
+buttons have clicked button before and then when they see it again, it can be a diff colour etc...
+
+In padding, it you put 2 numbres only, the first one will be top and bottom and the second number will be left and right.
+The button starts off as an inine element since it is simply text. It should be displayed as an inline-block. This way the 
+box model work on this as if it were a normal block element. We should always do this if we want to give some
+padding, height or width to elements.
+display-inline block allows you to set the width and height of an element
+
+ELEMENTS DO NOT SIT SIDE BY SIDE WITH BLOCK (ALWAYS A LINE BREAK)
+ELEMENTS DO SIT SIDE BY SIDE IN INLINE-BLOCK BUT HEIGHT AND WIDTH IS RESPECTED
+ELEMENTS WITH INLINE ONLY CANNOT HAVE PADDING, HEIGHT OR WIDTH
+
+inline-block element is treated as if it is text. If we want text to be center of the box, we just need to set the text book to center.
+i.e. its text-align property to center.
+*/
+
+/* here, we needed to make it an inline-block as <a> is inline by default and you cannot apply transformations
+to an inline element 
+
+transition: all means all the properties are animated then we can specify a time that we want
+On initial state, we say that there can be a transition on all the properties then on the hover, we tell them how it should look
+like on hover state and active state
+*/
+
+.btn {
+    
+    &:link,
+    &:visited {
+    display: inline-block;
+    text-transform : uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    border-radius: 10rem;
+    transition: all;
+    position: relative;
+    font-size: $default-font-size
+    }
+
+    /* last part of rgba is the transparency / opacity */
+    &:hover {
+        transform: translateY(-0.3rem);
+        box-shadow: 0 .5rem 1rem rgba($color-black,.2);
+
+        /* when we hover the button, we want some certain styles for the after pseudo element 
+        this is an afterpseudo element only when we have the button on the hover state
+
+        We want the element to grow and fade out when you hover over it
+
+        Remember to put the transition property in the initial state
+        */
+        &::after {
+            transform: scaleX(1.5) scaleY(1.6);
+            opacity: 0;
+            }
+    }
+
+    /* this is when you click the button */
+    &:active {
+    transform: translateY(-.1rem);
+    }
+
+    &--white {
+    background-color: $color-white;
+    color: $color-grey-dark;
+
+        &::after{
+            background-color: $color-white;
+            }
+    }
+
+
+    &--green {
+        background-color: $color-primary;
+        color: $color-white;
+    
+            &::after{
+                background-color: $color-white;
+                }
+        }
+    /* this after pseudo element is very powerful in that it acts like a virtual element 
+    the trick is to add another button that looks like the one you already have, but you put it behind the button 
+    and when we're done with the button then this hidden pseudo element goes back behind the button
+
+    Now we want to have a height of 100% and a width of 100% as well. This works bcos the after pseudoelement is basically
+    treated liek a child of the button. If we want the height to be 100%, that is 100% of the height of the button.
+    If we set it to 100%, that means it will have the same dimensions.
+
+    TO PUT IT IN THE MIDDLE, USE ABSOLUTE. Remember it needs a reference which is the first element with a relative position.
+    Before, it was the header. But we want it to be hidden behind the button, so the reference should be the button so set
+    the position property to relative.
+
+    z-index defines the position of the elements if they are one of top of another one. -1 means it is definitely behind the button
+    */
+    &::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+    }
+
+
+    /* There will be multiple buttons like this. I want this animation to happen on this particular button so I made a new 
+    class on the button and only this button will have this class. 
+    We also add a delay to this
+
+    To make the button be transparent before the animation starts, we use animation-fill-mode. Thes styles
+    will now be applied before the animation starts.
+    */
+    &--animated {
+    animation: moveInBottom .5s ease-out .75s;
+    animation-fill-mode: backwards;
+    }
+
+}
+
+.btn-text {
+    &:link,
+    &:visited {
+        font-size: $default-font-size;
+        color: $color-primary;
+        display: inline-block;
+        text-decoration: none;
+        // this adds the underlining
+        border-bottom: 1px solid $color-primary;
+        padding: 3px;
+        transition: all .2s;
+    }
+
+    &:hover {
+        background-color: $color-primary;
+        color: #FFFFFF;
+        box-shadow: 0 1rem 2rem rgba($color-black, .15);
+        transform: translate(-2px);
+    }
+
+    &:active {
+        box-shadow: 0 .5rem 1rem rgba($color-black, .15);
+        transform: translateY(0);
+    }
+
+}

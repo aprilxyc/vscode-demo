@@ -1,0 +1,55 @@
+@import "../abstracts/mixins";
+
+// margins colllapse, padding does not
+.row {
+    max-width: $grid-width;
+    margin: 0 auto;
+
+    // if this is not last child, tehn we want to have a bottom margin
+    &:not(:last-child) {
+        margin-bottom: $gutter-vertical;
+    }
+
+    @include clearfix;
+
+    // this is the attribute selector
+    // this selects all the elements where the class attribute start with col
+    [class ^= "col-"] {
+        // because they share the same parent container, when you do float: left, both elements are placed on the left
+        // side of their container. In this case, it is separated by the gutter-horizontal margin.
+        float: left;
+
+        // we only want margins on the right side!
+        &:not(:last-child) {
+            // everything other than the last child has a horizontal gutter on the right
+            margin-right: $gutter-horizontal;
+        }
+
+    }
+
+    .col-1-of-2 {
+        width: calc((100% - #{$gutter-horizontal}) / 2);
+       
+    }
+
+    .col-1-of-3 {
+        width: calc((100% - #{$gutter-horizontal } * 2) / 3);
+    }
+
+    .col-1-of-4 {
+        width: calc((100% - #{$gutter-horizontal } * 3) / 4);
+    }
+
+    .col-2-of-3{
+        width: calc(#{$gutter-horizontal} + (((100% - #{$gutter-horizontal } * 2) / 3 ) * 2))
+    }
+
+    .col-2-of-4{
+        width: calc(((100% - #{$gutter-horizontal } * 3) / 4) * 2 + #{$gutter-horizontal})
+    }
+
+    .col-3-of-4{
+        width: calc(((100% - #{$gutter-horizontal } * 3) / 4) * 3 + 2 * #{$gutter-horizontal});
+    }
+
+}

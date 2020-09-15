@@ -1,0 +1,53 @@
+
+/* remember header is a class 
+
+vh means at every point, the height of this element should be 95%
+of the viewport height. If you put 100vh, it means the element
+will be exactly the height of the viewport.
+
+background size:cover -> makes whatever the width of viewport or the element,
+it will always try to fit the element inside of the box
+
+We can use clip-path to create a polygon!
+*/
+.header {
+    position        : relative;
+    height          : 95vh;
+    background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.8),rgba($color-primary-dark, 0.8)),
+      url(../img/hero.jpg);
+    background-size    : cover;
+    background-position: top;
+    -webkit-clip-path          : polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    clip-path          : polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  
+  
+      /* with absolute positioning, when we say 40px from the top and 40px from the left, the point of reference is the PARENT 
+      ELEMENT that has its position set to relative. Remember logo-box is the parent element! */
+    &__logo-box {
+      position: absolute;
+      top     : 4rem;
+      left    : 4rem;
+    }
+  
+    /* once you set the height, the width will be calculated byt he browser */
+      &__logo {
+      height: 3.5rem;
+    }
+    
+    /*
+    when you do position absolute, it is RELATIVE TO THE PARENT ELEMENT
+    
+    Use transofmr to centre it. 
+    The top and left is 50% then we can transform it. -50% means it will shift 50% of the element's height to the top.
+    Transforming it is in relation to the element itself and allows us to put the element at the centre.
+    */
+    &__text-box {
+      position : absolute;
+      top      : 40%;
+      left     : 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+    
+  }
+  

@@ -1,0 +1,57 @@
+@keyframes moveInBottom {
+    0% {
+      opacity: 0;
+      transform: translateY(3rem);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /*
+0% is when the animation starts
+100% is when the animation ends
+
+At the beginning of the animation, we want it to be transparent. 
+For best performance, it is good to only use opacity and transform properties.
+
+translateX goes from left to right
+translate(0) means it will look exactly the way that it looks right now
+
+For animation to work, we really need to only specify 2 properties: 
+animation-name and animation-duration
+*/
+@keyframes moveInLeft {
+    0% {
+      opacity  : 0;
+      transform: translateX(-10rem);
+    }
+  
+    80% {
+      transform: translateX(2rem);
+    }
+  
+    100% {
+      opacity  : 1;
+      transform: translate(0);
+    }
+  }
+  
+  @keyframes moveInRight {
+    0% {
+      opacity  : 0;
+      transform: translateX(10rem);
+    }
+  
+    80% {
+      transform: translateX(-2rem);
+    }
+  
+    100% {
+      opacity  : 1;
+      transform: translateX(0);
+    }
+  }
+  

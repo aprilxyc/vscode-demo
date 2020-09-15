@@ -1,0 +1,633 @@
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem); }
+  100% {
+    opacity: 1;
+    transform: translateY(0); } }
+
+/*
+0% is when the animation starts
+100% is when the animation ends
+
+At the beginning of the animation, we want it to be transparent. 
+For best performance, it is good to only use opacity and transform properties.
+
+translateX goes from left to right
+translate(0) means it will look exactly the way that it looks right now
+
+For animation to work, we really need to only specify 2 properties: 
+animation-name and animation-duration
+*/
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem); }
+  80% {
+    transform: translateX(2rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem); }
+  80% {
+    transform: translateX(-2rem); }
+  100% {
+    opacity: 1;
+    transform: translateX(0); } }
+
+/* Universal selector selects all elements on a page then applies
+the declarations to it. By default, browsers apply a certain padding
+or certain margin to some element. This allows us to start clean.
+
+Border box changes the box model so that the borders and the paddings
+are no longer added to the total width or the total height
+that we specify for a box. Without this, any paddings and borders
+are added to the height or the width of the element, which isn't useful
+for us.
+
+You can use the inherit keyword to force inheritance. The box sizing property is not inherited but now it is 
+set to inherit whatever we put here in border-box.
+Remember to also select the after and before elements!
+
+Try to undersatnd the box sizing
+*/
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+/* changed this to 10px in order to make our life easier. Now we know that 1rem === 10px.
+It is easy to replace all the pixel units with rem. We just need to divide the pixels by 10 and that's our rem.
+
+Note, you should not set the font size to a specific pixel number.
+We should use a % that will be a % of the font-size of the browser. The default is usually 16px. If we put 100%,
+then the root font size will be 16px.  We can just divide what we want by 16 i.e. 10px/16 so we 
+get 62.5% = 0.625%.
+
+TLDR; THIS DEFINES WHAT 1 REM IS
+*/
+html {
+  font-size: 62.5%; }
+
+body {
+  box-sizing: border-box; }
+
+.heading-primary {
+  color: #FFFFFF;
+  text-transform: uppercase;
+  margin-bottom: 6rem;
+  /* to put one part of the text above another one, you can display them both as block level elements
+      block elemebts occupy the entire width they have available and create line breaks after and before them 
+      BLOCK ELEMENTS OCCUPY 100% OF THE WIDTH
+  
+      span element is just like text
+  
+      ANIMATION PROPERTIES INCLUDE: 
+      animation-name
+      animation-duration
+      animation-delay
+      animation-iteration-count
+      animation-timing-function -> ease-in means animation will start slower and accelerate overtime and 
+      ease-out is the opposite
+      */ }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out; }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    animation: moveInRight 1s ease-out; }
+
+/*
+css has inheritance so all children of the body will inherit
+the same font-family etc... 
+*/
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  /* font-size  : 16px; */
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem;
+  box-sizing: border-box; }
+
+.heading-secondary {
+  display: inline-block;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  background-image: linear-gradient(to right, #7ed56f, #28b485);
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: .2rem;
+  transition: all .2s; }
+  .heading-secondary:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
+
+.heading-tertiary {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase; }
+
+.paragraph {
+  font-size: 1.6rem; }
+  .paragraph:not(:last-child) {
+    margin-bottom: 3rem; }
+
+.heading-primary {
+  color: #FFFFFF;
+  text-transform: uppercase;
+  margin-bottom: 6rem;
+  /* to put one part of the text above another one, you can display them both as block level elements
+      block elemebts occupy the entire width they have available and create line breaks after and before them 
+      BLOCK ELEMENTS OCCUPY 100% OF THE WIDTH
+  
+      span element is just like text
+  
+      ANIMATION PROPERTIES INCLUDE: 
+      animation-name
+      animation-duration
+      animation-delay
+      animation-iteration-count
+      animation-timing-function -> ease-in means animation will start slower and accelerate overtime and 
+      ease-out is the opposite
+      */ }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out; }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    animation: moveInRight 1s ease-out; }
+
+/*
+css has inheritance so all children of the body will inherit
+the same font-family etc... 
+*/
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  /* font-size  : 16px; */
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem;
+  box-sizing: border-box; }
+
+.heading-secondary {
+  display: inline-block;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  background-image: linear-gradient(to right, #7ed56f, #28b485);
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: .2rem;
+  transition: all .2s; }
+  .heading-secondary:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
+
+.heading-tertiary {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase; }
+
+.paragraph {
+  font-size: 1.6rem; }
+  .paragraph:not(:last-child) {
+    margin-bottom: 3rem; }
+
+.u-center-text {
+  text-align: center; }
+
+.u-margin-bottom-small {
+  margin-bottom: 2rem; }
+
+.u-margin-bottom-medium {
+  margin-bottom: 4rem; }
+
+.u-margin-bottom-big {
+  margin-bottom: 8rem; }
+
+.u-margin-bottom-top {
+  margin-top: 8rem; }
+
+/* button is a link so we need a link pseudoclass- a special state of the button selector
+We use pseudoclasses to style elements under a certain condition
+The link is a special state of a selector when it is an anchor element. There is also a visited state i.e. when
+buttons have clicked button before and then when they see it again, it can be a diff colour etc...
+
+In padding, it you put 2 numbres only, the first one will be top and bottom and the second number will be left and right.
+The button starts off as an inine element since it is simply text. It should be displayed as an inline-block. This way the 
+box model work on this as if it were a normal block element. We should always do this if we want to give some
+padding, height or width to elements.
+display-inline block allows you to set the width and height of an element
+
+ELEMENTS DO NOT SIT SIDE BY SIDE WITH BLOCK (ALWAYS A LINE BREAK)
+ELEMENTS DO SIT SIDE BY SIDE IN INLINE-BLOCK BUT HEIGHT AND WIDTH IS RESPECTED
+ELEMENTS WITH INLINE ONLY CANNOT HAVE PADDING, HEIGHT OR WIDTH
+
+inline-block element is treated as if it is text. If we want text to be center of the box, we just need to set the text book to center.
+i.e. its text-align property to center.
+*/
+/* here, we needed to make it an inline-block as <a> is inline by default and you cannot apply transformations
+to an inline element 
+
+transition: all means all the properties are animated then we can specify a time that we want
+On initial state, we say that there can be a transition on all the properties then on the hover, we tell them how it should look
+like on hover state and active state
+*/
+.btn {
+  /* last part of rgba is the transparency / opacity */
+  /* this is when you click the button */
+  /* this after pseudo element is very powerful in that it acts like a virtual element 
+    the trick is to add another button that looks like the one you already have, but you put it behind the button 
+    and when we're done with the button then this hidden pseudo element goes back behind the button
+
+    Now we want to have a height of 100% and a width of 100% as well. This works bcos the after pseudoelement is basically
+    treated liek a child of the button. If we want the height to be 100%, that is 100% of the height of the button.
+    If we set it to 100%, that means it will have the same dimensions.
+
+    TO PUT IT IN THE MIDDLE, USE ABSOLUTE. Remember it needs a reference which is the first element with a relative position.
+    Before, it was the header. But we want it to be hidden behind the button, so the reference should be the button so set
+    the position property to relative.
+
+    z-index defines the position of the elements if they are one of top of another one. -1 means it is definitely behind the button
+    */
+  /* There will be multiple buttons like this. I want this animation to happen on this particular button so I made a new 
+    class on the button and only this button will have this class. 
+    We also add a delay to this
+
+    To make the button be transparent before the animation starts, we use animation-fill-mode. Thes styles
+    will now be applied before the animation starts.
+    */ }
+  .btn:link, .btn:visited {
+    display: inline-block;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    border-radius: 10rem;
+    transition: all;
+    position: relative;
+    font-size: 1.6rem; }
+  .btn:hover {
+    transform: translateY(-0.3rem);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    /* when we hover the button, we want some certain styles for the after pseudo element 
+        this is an afterpseudo element only when we have the button on the hover state
+
+        We want the element to grow and fade out when you hover over it
+
+        Remember to put the transition property in the initial state
+        */ }
+    .btn:hover::after {
+      transform: scaleX(1.5) scaleY(1.6);
+      opacity: 0; }
+  .btn:active {
+    transform: translateY(-0.1rem); }
+  .btn--white {
+    background-color: #FFFFFF;
+    color: #777; }
+    .btn--white::after {
+      background-color: #FFFFFF; }
+  .btn--green {
+    background-color: #55c57a;
+    color: #FFFFFF; }
+    .btn--green::after {
+      background-color: #FFFFFF; }
+  .btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s; }
+  .btn--animated {
+    animation: moveInBottom .5s ease-out .75s;
+    animation-fill-mode: backwards; }
+
+.btn-text:link, .btn-text:visited {
+  font-size: 1.6rem;
+  color: #55c57a;
+  display: inline-block;
+  text-decoration: none;
+  border-bottom: 1px solid #55c57a;
+  padding: 3px;
+  transition: all .2s; }
+
+.btn-text:hover {
+  background-color: #55c57a;
+  color: #FFFFFF;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  transform: translate(-2px); }
+
+.btn-text:active {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  transform: translateY(0); }
+
+.composition {
+  position: relative; }
+  .composition__photo {
+    width: 55%;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
+    border-radius: 2px;
+    position: absolute;
+    z-index: 10;
+    transition: all .2s;
+    outline-offset: 2rem; }
+    .composition__photo--p1 {
+      left: 0;
+      top: -2rem; }
+    .composition__photo--p2 {
+      right: 0;
+      top: 2rem; }
+    .composition__photo--p3 {
+      left: 20%;
+      top: 15rem; }
+    .composition__photo:hover {
+      outline: 1.5rem solid #55c57a;
+      transform: scale(1.05) translateY(-0.5rem);
+      box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.5);
+      z-index: 20; }
+  .composition:hover .composition__photo:not(:hover) {
+    transform: scale(0.95); }
+
+.feature-box {
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 1.5rem;
+  padding: 2.5rem;
+  text-align: centered;
+  border-radius: 2px;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  text-align: center;
+  transition: transform .2s; }
+  .feature-box__icon {
+    display: inline-block;
+    font-size: 6rem;
+    margin-bottom: .5rem;
+    background-image: linear-gradient(to right, #7ed56f, #28b485);
+    -webkit-background-clip: text;
+    color: transparent; }
+  .feature-box:hover {
+    transform: translateY(-1.5rem) scale(1.03); }
+
+.card {
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+  position: relative;
+  height: 50rem; }
+  .card__side {
+    font-size: 2rem;
+    height: 50rem;
+    transition: all .8s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    backface-visibility: hidden;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15); }
+    .card__side--front {
+      background-color: #FFFFFF; }
+    .card__side--back {
+      transform: rotateY(180deg); }
+      .card__side--back-1 {
+        background-image: linear-gradient(to right bottom, #FFB900, #FF7730); }
+  .card:hover .card__side--front {
+    transform: rotateY(-180deg); }
+  .card:hover .card__side--back {
+    transform: rotateY(0); }
+  .card__cta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 90%; }
+  .card__price-box {
+    text-align: center;
+    color: #FFFFFF;
+    margin-bottom: 8rem; }
+  .card__price-only {
+    font-size: 1.4rem;
+    text-transform: uppercase; }
+  .card__price-value {
+    font-size: 6rem;
+    font-weight: 100; }
+  .card__picture {
+    background-size: cover;
+    height: 23rem;
+    background-blend-mode: screen;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
+    .card__picture--1 {
+      background-image: linear-gradient(to right bottom, #FFB900, #FF7730), url(../img/nat-5.jpg); }
+    .card__picture--2 {
+      background-image: url(../img/nat-5.jpg); }
+    .card__picture--3 {
+      background-image: url(../img/nat-5.jpg); }
+  .card__heading {
+    font-size: 2.8rem;
+    font-weight: 300;
+    text-align: right;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    position: absolute;
+    top: 12rem;
+    right: 2rem;
+    width: 68%; }
+  .card__heading-span {
+    padding: 1.5rem 1.5rem;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone; }
+    .card__heading-span--1 {
+      background-image: linear-gradient(to right bottom, rgba(255, 185, 0, 0.85), rgba(255, 119, 48, 0.85)); }
+  .card__details {
+    padding: 3rem; }
+    .card__details ul {
+      list-style: none;
+      width: 80%;
+      margin: 0 auto; }
+      .card__details ul li {
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 1rem; }
+        .card__details ul li:not(:last-child) {
+          border-bottom: 1px solid #eee; }
+
+.story {
+  width: 75%;
+  margin: 0 auto;
+  box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 3px;
+  padding: 6rem;
+  padding-left: 9rem;
+  font-size: 1.6rem;
+  transform: skewX(-12deg); }
+  .story__shape {
+    position: relative;
+    width: 15rem;
+    height: 15rem;
+    background-color: orangered;
+    float: left;
+    -webkit-shape-outside: circle(50% at 50% 50%);
+    shape-outside: circle(50% at 50% 50%);
+    -webkit-shape-outside: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+    transform: translate(-3rem) skewX(12deg); }
+  .story__img {
+    transform: translateX(-4rem) scale(1.4);
+    height: 100%;
+    backface-visibility: hidden;
+    transition: all .5s; }
+  .story__text {
+    transform: skewX(12deg); }
+  .story__caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 20%);
+    color: #FFFFFF;
+    font-size: 1.7rem;
+    text-align: center;
+    opacity: 0;
+    transition: all .5s;
+    backface-visibility: hidden; }
+  .story:hover .story__caption {
+    opacity: 1;
+    transform: translate(-50%, -50%); }
+  .story:hover .story__img {
+    transform: translateX(-4rem) scale(1);
+    filter: blur(3px) brightness(90%); }
+
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  opacity: .15;
+  overflow: hidden; }
+  .bg-video__content {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; }
+
+/* remember header is a class 
+
+vh means at every point, the height of this element should be 95%
+of the viewport height. If you put 100vh, it means the element
+will be exactly the height of the viewport.
+
+background size:cover -> makes whatever the width of viewport or the element,
+it will always try to fit the element inside of the box
+
+We can use clip-path to create a polygon!
+*/
+.header {
+  position: relative;
+  height: 95vh;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  /* with absolute positioning, when we say 40px from the top and 40px from the left, the point of reference is the PARENT 
+      ELEMENT that has its position set to relative. Remember logo-box is the parent element! */
+  /* once you set the height, the width will be calculated byt he browser */
+  /*
+    when you do position absolute, it is RELATIVE TO THE PARENT ELEMENT
+    
+    Use transofmr to centre it. 
+    The top and left is 50% then we can transform it. -50% means it will shift 50% of the element's height to the top.
+    Transforming it is in relation to the element itself and allows us to put the element at the centre.
+    */ }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem; }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center; }
+
+.row {
+  max-width: 114rem;
+  margin: 0 auto; }
+  .row:not(:last-child) {
+    margin-bottom: 6rem; }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row [class^="col-"] {
+    float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 6rem; }
+  .row .col-1-of-2 {
+    width: calc((100% - 6rem) / 2); }
+  .row .col-1-of-3 {
+    width: calc((100% - 6rem * 2) / 3); }
+  .row .col-1-of-4 {
+    width: calc((100% - 6rem * 3) / 4); }
+  .row .col-2-of-3 {
+    width: calc(6rem + (((100% - 6rem * 2) / 3 ) * 2)); }
+  .row .col-2-of-4 {
+    width: calc(((100% - 6rem * 3) / 4) * 2 + 6rem); }
+  .row .col-3-of-4 {
+    width: calc(((100% - 6rem * 3) / 4) * 3 + 2 * 6rem); }
+
+.section-about {
+  background-color: #f7f7f7;
+  padding: 25rem 0;
+  margin-top: -20vh; }
+
+.section-features {
+  padding: 20rem 0;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/nat-4.jpg);
+  background-size: cover;
+  margin-top: -10rem;
+  transform: skewY(-7deg); }
+  .section-features > * {
+    transform: skewY(7deg); }
+
+.section-tours {
+  background-color: #f7f7f7;
+  padding: 25rem 0 50rem 0;
+  margin-top: -10rem; }
+
+.section-stories {
+  position: relative;
+  padding: 15rem 0; }

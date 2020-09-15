@@ -1,0 +1,153 @@
+.card {
+
+    // FUNCTIONALITY
+    perspective: 150rem;
+    // to work in Mozilla firefox
+    -moz-perspective: 150rem;
+    position: relative;
+    height: 50rem;
+
+    &__side {
+        font-size: 2rem;
+        height: 50rem;
+        transition: all .8s ease;
+        position: absolute; // this means they are taken out of their natural flow so their parent collapsed and lost their height.
+        // there is nothing we can do here other than just specifying the height of the card again (the parent)
+        top: 0;
+        left: 0;
+        width: 100%;
+        //we need this. If we set it to hidden, it hides the back part of an element.
+        backface-visibility: hidden;
+        border-radius: 3px;
+        overflow: hidden;
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+
+        &--front {
+            background-color: $color-white;
+        }
+
+        // the back side is already 180deg then when we rotate it, it then goes to 0 deg
+        &--back {
+            // backside is already 180deg to begin with
+            transform: rotateY(180deg);
+
+            &-1 {
+                background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
+            }
+        }
+    }
+    
+    // this is the same as when the card is hovered, the the card side is transformed
+    // i.e. .card:hover .card__side
+    &:hover &__side--front {
+        transform: rotateY(-180deg);
+    }
+
+    &:hover &__side--back {
+        transform: rotateY(0);
+    }
+
+    // FRONT SIDE STYLING
+
+
+    &__cta {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        width: 90%;
+    }
+
+    &__price-box {
+        text-align: center;
+        color: $color-white;
+        margin-bottom: 8rem;
+    }
+
+    &__price-only {
+        font-size: 1.4rem;
+        text-transform: uppercase;
+    }
+
+    &__price-value {
+        font-size: 6rem;
+        font-weight: 100;
+    }
+
+    &__picture {
+
+        // applying this to the more general selector
+        background-size: cover;
+        height: 23rem;
+        background-blend-mode: screen;
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        // clip path is very new, to make it work for all the browsers, prefix it with webkit
+        
+        &--1 {
+            // we only MOVE UP because this will eventually be written into the style.css file
+            background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark), url(../img/nat-5.jpg);
+        }
+
+        &--2 {
+            // we only MOVE UP because this will eventually be written into the style.css file
+            background-image: url(../img/nat-5.jpg);
+        }
+
+        &--3 {
+            // we only MOVE UP because this will eventually be written into the style.css file
+            background-image: url(../img/nat-5.jpg);
+        }
+    }
+
+    &__heading {
+        // heading will be on top of the image
+        font-size: 2.8rem;
+        font-weight: 300;
+        text-align: right;
+        text-transform: uppercase;
+        color: $color-white;
+        position: absolute;
+        top: 12rem;
+        right: 2rem;
+        width: 68%;
+    }
+
+    // this isn't really a child of the heading. It is a whole new element called heading-span. Hence, it will be a
+    // separate selector
+    &__heading-span {
+        // this is treated as one element. We want it to be treated as two different elements.
+        padding: 1.5rem 1.5rem;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+        &--1 {
+            background-image: linear-gradient(to right bottom, rgba($color-secondary-light, .85), rgba($color-secondary-dark, .85));
+        }
+
+    }
+
+    &__details {
+        padding: 3rem;
+
+        ul {
+            list-style: none;
+            width: 80%;
+            // easiest way to center a block element within a block element
+            margin: 0 auto;
+
+            li {
+                text-align: center;
+                font-size: 1.5rem;
+                padding: 1rem;
+
+                
+                
+                &:not(:last-child){
+                    // this is the underline
+                    border-bottom: 1px solid $color-grey-light-2;
+                }
+            }
+        }
+    }
+}

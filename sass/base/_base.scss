@@ -1,0 +1,44 @@
+
+
+/* Universal selector selects all elements on a page then applies
+the declarations to it. By default, browsers apply a certain padding
+or certain margin to some element. This allows us to start clean.
+
+Border box changes the box model so that the borders and the paddings
+are no longer added to the total width or the total height
+that we specify for a box. Without this, any paddings and borders
+are added to the height or the width of the element, which isn't useful
+for us.
+
+You can use the inherit keyword to force inheritance. The box sizing property is not inherited but now it is 
+set to inherit whatever we put here in border-box.
+Remember to also select the after and before elements!
+
+Try to undersatnd the box sizing
+*/
+
+*,
+*::after,
+*::before {
+  margin    : 0;
+  padding   : 0;
+  box-sizing: inherit;
+}
+
+/* changed this to 10px in order to make our life easier. Now we know that 1rem === 10px.
+It is easy to replace all the pixel units with rem. We just need to divide the pixels by 10 and that's our rem.
+
+Note, you should not set the font size to a specific pixel number.
+We should use a % that will be a % of the font-size of the browser. The default is usually 16px. If we put 100%,
+then the root font size will be 16px.  We can just divide what we want by 16 i.e. 10px/16 so we 
+get 62.5% = 0.625%.
+
+TLDR; THIS DEFINES WHAT 1 REM IS
+*/
+html {
+  font-size: 62.5%;
+}
+
+body {
+    box-sizing: border-box;
+  }
